@@ -1,0 +1,28 @@
+<div class="card mb-3">
+    <div class="card-header">
+        Appointments
+        <button type="button" class="btn btn-info pull-right" (click)="addNew();"><i class="fa fa-plus"></i> Make Appointment</button>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date From</th>
+                    <th>Date To</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let appointment of appointments">
+                    <td>{{appointment.Patient.FirstName}} {{appointment.Patient.LastName}}</td>
+                    <td>{{appointment.Doctor.FirstName}} {{appointment.Doctor.LastName}}</td>
+                    <td>{{appointment.Date | date:'short'}}</td>
+                    <td>{{appointment.DateTo | date:'short'}}</td>
+                    <td>{{appointment.Price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="card mb-3">
+    <div class="card-header">
+        Patient Information
+    </div>
+    <div class="card-body table-responsive">
+        <form role="form">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="disabledSelect">First Name</label>
+                        <input [(ngModel)]="currentpatient.FirstName" class="form-control" disabled="" name="FirstName"
+                            placeholder="First Name" type="text" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="disabledSelect">Last Name</label>
+                        <input [(ngModel)]="currentpatient.LastName" class="form-control" disabled="" name="LastName"
+                            placeholder="Last Name" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="disabledSelect">Age</label>
+                        <input [(ngModel)]="currentpatient.Age" class="form-control" disabled="" name="Age"
+                            placeholder="Age" type="number" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="card-header">
+        Doctor Information
+    </div>
+    <div class="card-body table-responsive">
+        <form role="form">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Doctor</label>
+                        <select class="form-control" (change)="selectdoctorChangeHandler($event)">
+                            <option *ngFor="let d of doctors" value={{d.DoctorId}}>{{d.FirstName}} {{d.LastName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div *ngIf="doc!=null" class="col-lg-6">
+                    <div class="form-group">
+                        <label>Profession</label>
+                        <input [(ngModel)]="doc.Profession" class="form-control" disabled="" name="doc.Profession"
+                            placeholder="Doctor Profession" type="text" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<div class="card mb-3">
+    <div class="card-header">
+        Appointment Information
+    </div>
+    <div class="card-body table-responsive">
+       <div *ngIf="alert" class="alert alert-danger">{{alert}}</div>
+        <form role="form">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <ejs-datetimepicker  [strictMode]='true'   [(ngModel)]="appointDate" name="appointDate" [min]='minDate' [max]='maxDate' (renderDayCell)='onRenderCell($event)'
+                            [placeholder]='placeholder' floatLabelType='Auto'></ejs-datetimepicker>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input [(ngModel)]="Price"  class="form-control"  name="Price"
+                            placeholder="Price" type="number" />
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button (click)="makeAppointment()" class="btn btn-success">Create</button>
+    </div>
+    
+</div>

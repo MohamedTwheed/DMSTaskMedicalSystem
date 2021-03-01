@@ -1,0 +1,41 @@
+<div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="FirstName">First Name</label>
+                        <input type="text" class="form-control" id="FirstName" required [(ngModel)]="patient.FirstName"
+                            name="FirstName" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="LastName">Last Name</label>
+                        <input class="form-control" id="LastName" required [(ngModel)]="patient.LastName" name="LastName" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="Age">Age</label>
+                        <input type="number" class="form-control" id="Age" required [(ngModel)]="patient.Age"
+                            name="Age" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="Gender">Gender</label>
+                        <select class="form-control" (change)="selectGenderChangeHandler($event)"><option *ngFor="let g of selectedGenderValue" value= {{g.value}}>{{g.name}} </option></select>
+                    </div>
+                </div>
+            </div>
+            <button (click)="addPatient()" class="btn btn-success">Create</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h3>You successfully added a patient!</h3>
+        </div>
+    </div>
+</div>

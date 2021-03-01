@@ -1,0 +1,31 @@
+
+<div class="card mb-3">
+    
+    <div class="card-header">
+        Patients
+        <button type="button" class="btn btn-info pull-right" (click)="addNew();"><i class="fa fa-plus"></i> Add</button>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let patient of patients">
+                    <td>{{patient.FirstName}}</td>
+                    <td>{{patient.LastName}}</td>
+                    <td>{{patient.Age}}</td>
+                    <td><a class="badge badge-info" routerLink="/patient/{{patient.PatientId}}">
+                        New Appointment
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

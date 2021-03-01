@@ -1,0 +1,77 @@
+<div class="card mb-3">
+    <div class="card-header">
+        Doctor Information
+    </div>
+    <div class="card-body table-responsive">
+    <form role="form">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="disabledSelect">First Name</label>
+                    <input [(ngModel)]="currentdoctor.FirstName" class="form-control" disabled="" name="FirstName"
+                        placeholder="First Name" type="text" />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="disabledSelect">Last Name</label>
+                    <input [(ngModel)]="currentdoctor.LastName" class="form-control" disabled="" name="LastName"
+                        placeholder="Last Name" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="disabledSelect">Profession</label>
+                    <input [(ngModel)]="currentdoctor.Profession" class="form-control" disabled="" name="Profession"
+                        placeholder="Profession" type="text" />
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+<div class="card mb-3">
+    <div class="card-header">
+        Appointments
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>From</label>
+                <input type="date" (change)="getDoctorAppointment(currentdoctor.DoctorId)" [(ngModel)]="from"
+                    name="from">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>To</label>
+                <input type="date" (change)="getDoctorAppointment(currentdoctor.DoctorId)" [(ngModel)]="to" name="to">
+            </div>
+        </div>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Patient Age</th>
+                    <th>Date from</th>
+                    <th>Date to</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let appointment of doctorAppointments">
+                    <td>{{appointment.Patient.FirstName}} {{appointment.Patient.LastName}} </td>
+                    <td>{{appointment.Patient.Age}}</td>
+                    <td>{{appointment.Date | date:'short'}}</td>
+                    <td>{{appointment.DateTo | date:'short'}}</td>
+                    <td>{{appointment.Price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -36,5 +36,8 @@
     "Password": "Password",
     "Repeat Password": "Repeat Password",
     "Register": "Register",
-    "Log in": "Log in"
+    "Log in": "Log in",
+    "Doctor": "Ärztin",
+    "Patient":"Geduldig",
+    "Appointments":"Termine"
 }

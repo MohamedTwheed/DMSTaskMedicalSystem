@@ -1,0 +1,59 @@
+<div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input type="text" class="form-control" id="FirstName" required [(ngModel)]="doctor.FirstName"
+                    name="FirstName" />
+            </div>
+
+            <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input class="form-control" id="LastName" required [(ngModel)]="doctor.LastName" name="LastName" />
+            </div>
+            <div class="form-group">
+                <label for="Profession">Profession</label>
+                 <select class="form-control" (change)="selectProfessionChangeHandler($event)"><option *ngFor="let p of profList">{{p}} </option></select>
+            </div>
+            <label>Doctor Schedule</label>
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="From">From</label>
+                    <select class="form-control"  (change)="selectFromChangeHandler($event)"><option *ngFor="let f of selectedFromValue">{{f|number : '1.2-2' }} </option></select>
+                </div>
+                <div class="col-lg-6">
+                    <label for="To">To</label>
+                    <select class="form-control"  (change)="selectToChangeHandler($event)"><option *ngFor="let t of selectedToValue">{{t|number : '1.2-2' }} </option></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label> <input type="checkbox" value="1" [(ngModel)]="Sunday" /> Sunday </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" value="2" [(ngModel)]="Monday"/> Monday </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" value="3" [(ngModel)]="Tuesday"/> Tuesday </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" value="4" [(ngModel)]="Wednesday"/> Wednesday </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" value="5" [(ngModel)]="Thursday"/> Thursday </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" value="6" [(ngModel)]="Friday"/> Friday </label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" value="7" [(ngModel)]="Saturday"/> Saturday </label>
+                </div>
+            </div>
+            <button (click)="addDoctor()" class="btn btn-success">Create</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h3>You successfully added a doctor!</h3>
+        </div>
+    </div>
+</div>
